@@ -17,6 +17,10 @@ type Model struct {
 	Counter int64
 }
 
+func (m *Model) TableName() string {
+	return "models"
+}
+
 func NewModel() *Model {
 	m := new(Model)
 	m.Name = "Orm Benchmark"

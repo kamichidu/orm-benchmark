@@ -3,7 +3,6 @@ package benchs
 import (
 	"fmt"
 
-	_ "github.com/lib/pq"
 	"github.com/naoina/genmai"
 )
 
