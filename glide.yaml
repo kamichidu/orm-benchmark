@@ -11,3 +11,4 @@ import:
 - package: github.com/naoina/genmai
 - package: gopkg.in/gorp.v1
 - package: gopkg.in/pg.v4
+- package: github.com/kamichidu/goen
