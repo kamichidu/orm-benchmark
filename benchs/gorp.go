@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"database/sql"
-	_ "github.com/lib/pq"
+
 	"gopkg.in/gorp.v1"
 )
 
@@ -22,6 +22,8 @@ func init() {
 		db, err := sql.Open("postgres", ORM_SOURCE)
 		checkErr(err)
 		d := &gorp.DbMap{Db: db, Dialect: gorp.PostgresDialect{}}
+		tbl := d.AddTableWithName(Model{}, "models")
+		tbl.SetKeys(true, "Id")
 		dbmap = d
 	}
 }
@@ -34,9 +36,9 @@ func GorpInsert(b *B) {
 	})
 	for i := 0; i < b.N; i++ {
 		m.Id = 0
-		d := dbmap.Insert(&m)
-		if d.Error != nil {
-			fmt.Println(d.Error())
+		err := dbmap.Insert(m)
+		if err != nil {
+			fmt.Println(err)
 			b.FailNow()
 		}
 	}

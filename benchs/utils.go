@@ -7,7 +7,7 @@ import (
 )
 
 type Model struct {
-	Id      int `orm:"auto" gorm:"primary_key" db:"id"`
+	Id      int `orm:"auto" gorm:"primary_key"`
 	Name    string
 	Title   string
 	Fax     string
